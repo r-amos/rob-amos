@@ -1,0 +1,42 @@
+{
+  "name": "rob-amos",
+  "version": "1.0.0",
+  "description": "Personal Site",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rob Amos",
+  "license": "ISC",
+  "dependencies": {
+    "npm": "^5.8.0",
+    "save-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^3.9.3",
+    "gulp-ext": "^1.0.0",
+    "gulp-gray-matter": "^3.0.1",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-minify": "^2.1.0",
+    "gulp-nunjucks": "^3.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.1",
+    "gulp-tap": "^1.0.1",
+    "gulp-watch": "^5.0.0",
+    "gulp-wrap": "^0.13.0",
+    "highlightjs": "^9.10.0",
+    "list-stream": "^1.0.1",
+    "markdown-it": "^8.4.1",
+    "nunjucks": "^3.1.2",
+    "prettier": "1.11.1",
+    "require-dir": "^1.0.0",
+    "run-sequence": "^2.2.1"
+  }
+}

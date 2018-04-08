@@ -13,6 +13,9 @@ const clean = require("gulp-clean");
 const requireDir = require("require-dir")("./gulp/tasks");
 const paths = require("./gulp/constants");
 
+// Allow For New/Deleted Actions To Be Watched
+const watch = require("gulp-watch");
+
 //Tidy Up - Delete Dist Folder
 gulp.task("tidy", () => {
   return gulp.src("../dist", { read: false }).pipe(clean({ force: true }));
@@ -24,9 +27,10 @@ gulp.task("serve", () => {
     server: paths.server
   });
   // Watch Markdown, Template, SASS & JS Files For Changes
-  gulp.watch([paths.markdown, paths.templates], ["html"]);
-  gulp.watch(paths.css, ["sass"]);
-  gulp.watch(paths.scripts, ["js"]);
+  watch(paths.markdown, () => runSequence("html"));
+  watch(paths.templates, () => runSequence("html"));
+  watch(paths.css, () => runSequence("sass"));
+  watch(paths.scripts, () => runSequence("js"));
 });
 
 // Sequence Tasks, Before Build Then Watch For Changes

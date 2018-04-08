@@ -1,0 +1,17 @@
+$test : 'yellow';
+
+body {
+
+    color: orange;
+    background-color: limegreen;
+}
+
+.test {
+
+    color: blue;
+
+    background-color: $test;
+
+}
+
+@import './vendor/github.css';
