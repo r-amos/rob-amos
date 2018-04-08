@@ -30,7 +30,7 @@ const browserSync = require("browser-sync").get("dev-server");
 const tap = require("gulp-tap");
 // Task Ordering
 const runSequence = require("run-sequence");
-// Define Path Constants -- TODO: Move To Constants File
+// Define Path Constants
 const paths = require("../constants");
 
 // File Manipulation
@@ -66,7 +66,6 @@ gulp.task("generateHTML", () => {
       // Tap Into Stream And Build Posts Data To Be Used To Create Posts Index
       .pipe(
         tap(file => {
-          //TODO: Logic To Rip Section Of Text to Act As A Preview
           posts[path.basename(file.path)] = file.data;
         })
       )
