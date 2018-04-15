@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "npm": "^5.8.0",
-    "save-dev": "^2.0.0"
+    "save-dev": "^2.0.0",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
