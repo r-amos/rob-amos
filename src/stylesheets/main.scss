@@ -1,17 +1,24 @@
-$test : 'yellow';
+// Abstracts
+@import './abstracts/mixins.scss';
+@import './abstracts/variables.scss';
 
-body {
+// Base
+@import './base/defaults.scss';
 
-    color: orange;
-    background-color: limegreen;
-}
+// Components
+@import './components/button.scss';
 
-.test {
 
-    color: blue;
 
-    background-color: $test;
+// Layout
+@import './layout/footer';
+@import './layout/header';
+@import './layout/navigation';
 
-}
+//Pages
+@import './pages/index';
+@import './pages/page';
+@import './pages/posts';
 
+// Vendor CSS
 @import './vendor/github.css';

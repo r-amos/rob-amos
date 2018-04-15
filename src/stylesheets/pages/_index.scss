@@ -1,0 +1,23 @@
+.index {
+
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: $desktop;
+
+    & h1 {
+
+        //display: inline-block;
+
+        &:after {
+            content: "";
+            display: block;
+            margin-top: 2.2rem;
+            height: .8rem;
+            background: linear-gradient(to left, #F45C43, #EB3349);
+ 
+        }
+    }
+
+}

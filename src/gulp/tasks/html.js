@@ -1,6 +1,7 @@
 // Standard
 const gulp = require("gulp");
 const path = require("path");
+const moment = require("moment");
 
 // Converting Markdown To HTML & Extract Grey Matter
 const hljs = require("highlightjs");
@@ -47,16 +48,18 @@ const ext = require("gulp-ext");
 const nunjucks = require("nunjucks");
 const gulpNunjucks = require("gulp-nunjucks");
 // Prevent Auto Escaping The Outputted HTML
-nunjucks.configure({ autoescape: false });
+nunjucks.configure({ autoescape: false, noCache: true });
 
 // HTML Minification
 const htmlmin = require("gulp-htmlmin");
 
 // Store Posts Data In Memory
-const posts = {};
+let posts = [];
 
 // Get All Pages Markdown & Create HTML
 gulp.task("generateHTML", () => {
+  if (posts.length != 0) posts = [];
+
   // Maintain Directory Structure On Output With {base: "."} Parameter
   return (
     gulp
@@ -64,12 +67,27 @@ gulp.task("generateHTML", () => {
       // Remove Front Matter, Making It Available On File Object
       .pipe(grayMatter({ remove: true }))
       // Tap Into Stream And Build Posts Data To Be Used To Create Posts Index
+      // Reformat Date & Add To File
       .pipe(
         tap(file => {
-          posts[path.basename(file.path)] = file.data;
+          if (
+            file.data.template === "post" &&
+            !posts.map(post => post.title).includes(file.data.title)
+          ) {
+            let blogDate = file.data.date.toString();
+            file.data.formattedDate = moment(
+              blogDate.substring(0, 4) +
+                "-" +
+                blogDate.substring(4, 6) +
+                "-" +
+                blogDate.substring(6, 9),
+              "YYYY-MM-DD"
+            ).format("MMMM Do YYYY");
+            posts.push(file.data);
+          }
         })
       )
-      // Tap Into Stream, Convert Markdown To HTML (markdown Configured Eith Highlighting)
+      // Tap Into Stream, Convert Markdown To HTML (markdown has been Configured With Highlighting)
       .pipe(
         tap(file => {
           file.contents = Buffer.from(
@@ -80,13 +98,13 @@ gulp.task("generateHTML", () => {
       /*  
         Wrap Generated HTML In Template, Use A Call Back To Acces File Object
         Data Property Containing Front Matter Added In GrayMatter. Use To Determine
-        Template To Be Used. Other Parameters Specify nunjucks As Template Engine
+        Template To Be Used. 'Other' Parameters Specify nunjucks As Template Engine
         */
       .pipe(
         wrap(
           data => {
             return fs
-              .readFileSync(`./templates/${data.template}.html`)
+              .readFileSync(`./templates/pages/${data.template}.njk`)
               .toString();
           },
           null,
@@ -112,7 +130,18 @@ gulp.task("generateHTML", () => {
 // The Post Listing Index
 gulp.task("generatePostsIndex", () => {
   gulp
-    .src("./templates/posts.html")
+    .src("./templates/pages/posts.njk")
+    .pipe(
+      wrap(
+        data => {
+          return fs.readFileSync(`./templates/pages/posts.njk`).toString();
+        },
+        { posts: posts },
+        { engine: "nunjucks" }
+      )
+    )
+    // Minify HTML
+    .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulpNunjucks.compile({ posts: posts }))
     .pipe(rename("index.html"))
     .pipe(gulp.dest("../dist/posts"));

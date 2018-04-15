@@ -1,0 +1,13 @@
+{% extends "./templates/pages/_page.njk" %}
+{% block content %}
+<div class="page__content">
+    <article>
+        <header>
+            <h2>{{ file.data.title }}</h2>
+        </header>
+        {{ contents }}
+    <article>
+</div>
+{% endblock %}
+
+

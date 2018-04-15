@@ -1,0 +1,16 @@
+{% extends "./templates/pages/_page.njk" %}
+{% block content %}
+    <div class="posts">
+        <h2 class="posts__title">Posts.</h2>
+        <ul class="posts__list">        
+            {% for post in posts|sort(attribute="date", reverse="True") %}
+                <li class="posts__list-item">
+                    <h3><a class="posts__link" href="./{{post.url}}.html"> {{ post.title }}</h3>
+                    <h4 class="posts__date">Posted: {{ post.formattedDate }}</h4>
+                    <p>{{ post.summary}}</p>
+                </li>
+                <a href="./{{post.url}}.html" class="button button--red">Read More</a>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

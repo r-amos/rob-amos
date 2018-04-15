@@ -1,0 +1,63 @@
+footer {
+
+    display: flex;
+    justify-content: center;
+    background-color: $grey-dark;
+    margin-top: 3rem;
+
+}
+
+img {
+
+    width: 2.5rem;
+    height: 2.5rem;
+
+}
+
+svg {
+
+    width: 2.5rem;
+    height: 2.5rem;
+    stroke: $black;
+    fill: $white;
+    margin: 0;
+
+}
+
+
+.footer {
+
+    flex-shrink: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    &__list {
+
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        justify-content: center;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 300;
+        margin: 1.5rem 0;
+
+        &-item {
+            display: flex;
+            vertical-align: middle;
+            &:not(:last-of-type) {
+                text-align: center;
+                margin-right: 5rem;
+            }
+
+        }
+
+    }
+
+    &__link {
+
+        height: 25px;
+
+    }
+
+}

@@ -1,0 +1,132 @@
+*,
+*::before,
+*::after {
+
+    margin: 0px;
+    padding: 0px;
+    box-sizing: inherit;
+
+}
+
+html {
+
+    font-size: 62.5%;
+    font-family: 'EB Garamond', serif;
+    background-color: $white;
+    color: $grey-dark;
+
+}
+
+body {
+
+    font-size: 1.6rem;
+    line-height: 1.5;
+    
+    // Sticky Footer
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+main {
+
+    // Sticky Footer
+    flex: 1 0 auto;
+}
+
+
+h1, h2, h3, h4, h5 {
+
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 2.2rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: $black;
+
+}
+
+h1 {
+
+    font-size: 4.8rem;
+    line-height: 6rem;
+    letter-spacing: 0.4px;    
+
+}
+
+h2 {
+
+    font-size: 3.6rem;
+    line-height: 4.2rem;
+    letter-spacing: 0.3px;
+
+    &:after {
+        content: "";
+        margin-top: 2.2rem;
+        display: block;
+        height: .8rem;
+        background: linear-gradient(to left, #F45C43, #EB3349);
+
+    }
+
+}
+
+h3 {
+
+    font-size: 2.7rem; 
+    line-height: 3.5rem;
+    letter-spacing: 0.2px;       
+
+}
+
+h4 {
+
+    font-size: 2.025rem;
+    line-height: 2.2rem;
+    letter-spacing: 0.1px;    
+
+}
+
+h5 {
+
+    font-size: 1.51875rem;
+    line-height: 2.2rem;
+    letter-spacing: 0.1px;    
+
+}
+
+article {
+
+    margin: 0 auto;
+    max-width: $desktop;
+
+}
+
+p {
+
+    margin-bottom: 2.2rem;
+    hyphens: auto;
+}
+
+article ul {
+
+    margin-left: 3rem;
+    margin-bottom: 2.2rem;
+
+}
+
+pre {
+
+    margin-bottom: 2.2rem;
+
+}
+
+blockquote {
+
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    border-left: 0.25em solid #dfe2e5;
+    padding-left: 1rem;
+    color: #6a737d;
+
+}

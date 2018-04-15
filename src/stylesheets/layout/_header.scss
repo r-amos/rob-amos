@@ -1,0 +1,38 @@
+.header {
+
+    position: fixed;
+    margin-left: 5rem;
+    top: -.5rem;
+    z-index: 2;
+    overflow: hidden;
+
+    &__title {
+
+        font-size: 2rem;
+
+    }
+
+    &__link {
+
+        text-decoration: none;
+        font-weight: 400;
+        color: $white;
+        word-spacing: -3px;
+
+        @include animate-link($orange-dark);
+
+        &::after {
+
+            top: -18px;
+        }
+
+        &--firstname {
+
+            color: rgba($white, 0.8s);
+            font-weight: 500;
+
+        }
+
+    }
+
+}

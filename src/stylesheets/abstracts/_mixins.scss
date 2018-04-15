@@ -1,0 +1,21 @@
+@mixin animate-link($color){
+
+    &:after {
+
+        content: "";
+        display: block;
+        position: relative;
+        top: -4.5px;
+        border-bottom: 2px solid $color;
+        transform: translateX(-100%);
+        transition: all 0.2s;
+
+    }
+
+    &:hover:after {
+
+        transform: translateX(0);
+
+    }
+
+}

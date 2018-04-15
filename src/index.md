@@ -1,15 +1,9 @@
 --- 
-title: Sample Page
-template: page
+title: index
+template: index
 ---
 
 
-# Title
+# Welcome.
 
-Content
-
-## Smaller Title
-
-### Smaller Again
-
-More content
+Hello and welcome to my personal site. Here you will find my ramblings as I document my path to becoming a web developer.

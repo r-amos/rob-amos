@@ -7,8 +7,9 @@ function define(name, value) {
 
 // Define Constants
 
-define("markdown", ["*.md", "./posts/*/*.md"]);
+define("markdown", ["*.md", "./posts/*.md"]);
 define("scripts", "./js/**/*.js");
-define("css", "./stylesheets/**/*.scss");
-define("templates", "./templates/*.html");
+define("css", "./stylesheets/*.scss");
+define("img", "./img/*");
+define("templates", "./templates/**/*.njk");
 define("server", "../dist");

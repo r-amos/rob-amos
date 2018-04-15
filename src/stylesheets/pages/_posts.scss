@@ -1,0 +1,47 @@
+.posts {
+
+    margin: 11rem auto 0 auto;
+    max-width: $desktop;
+    padding: 0 5rem;
+
+    &__list {
+
+        overflow: hidden;
+
+        list-style: none;
+
+        &-item{
+
+            margin-bottom: 4rem;
+        }
+
+    }
+
+    &__date {
+
+        color: rgba($grey-dark,.8);
+
+    }
+
+    &__link {
+
+        display: inline-block;
+        text-decoration: none;
+        $color: rgba(black,.8);
+        @include animate-link($color);
+
+        &:hover {
+
+            color: $color;
+
+        }
+
+        &:visited {
+
+            color: inherit;
+
+        }
+
+    }
+
+}

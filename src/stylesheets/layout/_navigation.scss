@@ -1,0 +1,212 @@
+.navigation {
+
+    height: 5rem;
+    border-bottom: 1px solid rgba($grey-dark, .1);
+    z-index: 1;
+    background-color: $grey-dark;
+    box-shadow: .25px .25px 10px rgba($grey-dark, .09);
+
+    &--main {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+    }
+
+    @media(min-width: 450px) {
+
+        &-mobile {
+
+            display: none;
+
+        }
+
+        &__list {
+
+            display: flex;
+            list-style: none;
+
+        }
+
+        &__item {
+
+            overflow: hidden;
+                    
+            &:not(:last-of-type) {
+
+                margin-right: 3rem;
+
+            }
+
+            &:last-of-type {
+
+                margin-right: 5rem;
+
+            }
+
+        }
+
+        &__link {
+
+            color: $white;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 400;
+            font-size: 1.8rem;
+            text-align: center;
+            text-decoration: none;
+            letter-spacing: 1px;
+
+            @include animate-link($orange-dark);
+
+            &:visited {
+
+                color: $white;
+                text-decoration: none;
+
+            }
+
+        }
+
+    }
+
+    @media(max-width: 450px) {
+
+        &__list {
+
+            display: none;
+
+        }
+
+        &-mobile {
+
+            position: fixed;
+            z-index: 1;
+            right: 0;
+            top: -9px;
+
+            & label {
+
+                cursor: pointer;
+            }
+
+            &__input[type=checkbox] {
+
+                opacity: 0;
+
+            }
+
+            &__hamburger {
+
+                background-color: $orange-dark;
+                width: 30px;
+                height: 4px;
+                border-radius: 2px;
+                margin-right: 20px;
+                transition: all .5s;
+
+
+                &:not(:last-child){
+                    margin-bottom: 4px;
+
+                }
+
+            }
+
+            &__input[type=checkbox]:checked + .navigation-mobile__hamburger {
+
+                transform: rotate(45deg) translate(10px, 3px);
+
+            }
+
+            &__input[type=checkbox]:checked + .navigation-mobile__hamburger + div {
+
+                opacity: 0;
+
+            }
+
+            &__input[type=checkbox]:checked ~ .navigation-mobile__hamburger + div + div {
+
+                transform: rotate(-45deg) translate(8px, -2px);
+
+            }
+
+            &__list {
+
+                height: 100vh;
+                width: 100vw;
+                list-style: none;
+                transform:translateX(400%);
+                transition: all .75s;
+                position: fixed;
+                right: 0px;
+                background-color: $grey-dark;
+                color: white;
+
+                & div {
+
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform:translate(-50%,-50%);
+                    overflow: hidden;
+
+                    & li:after {
+
+                        content: "";
+                        margin-top: 1rem;
+                        display: block;
+                        height: 1rem;
+                        transform: translateX(-100%);
+                        background: linear-gradient(to left, #F45C43, #EB3349);
+                        transition: all .2s;
+                
+                    }
+
+                    & li:hover:after {
+
+                        transform: translateX(0);
+                
+                    }
+
+                }
+
+            }
+
+            &__item {
+
+                font-family: 'Oswald', sans-serif;
+                font-weight: 800;
+                font-size: 6rem;
+                letter-spacing: 2px;
+
+                a {
+
+                    text-decoration: none;
+                    color: inherit;
+
+                    &:visited {
+
+                        color: inherit;
+
+                    }
+                }
+
+            }
+
+            &__input[type=checkbox]:checked ~ div  ~ ul {
+
+                transform:translateX(0);
+
+            }
+
+        }
+
+    }
+
+}

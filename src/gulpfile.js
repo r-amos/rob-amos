@@ -28,14 +28,16 @@ gulp.task("serve", () => {
   });
   // Watch Markdown, Template, SASS & JS Files For Changes
   watch(paths.markdown, () => runSequence("html"));
-  watch(paths.templates, () => runSequence("html"));
-  watch(paths.css, () => runSequence("sass"));
+  watch(paths.templates, () => {
+    runSequence("html");
+  });
+  watch("./stylesheets/**/*.scss", () => runSequence("sass"));
   watch(paths.scripts, () => runSequence("js"));
 });
 
 // Sequence Tasks, Before Build Then Watch For Changes
 gulp.task("build", () => {
-  runSequence("tidy", ["html", "js", "sass", "serve"]);
+  runSequence("tidy", ["html","img", "js", "sass", "serve"]);
 });
 
 // Chain All Tasks
