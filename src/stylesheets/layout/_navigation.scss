@@ -2,7 +2,6 @@
 
     height: 5rem;
     border-bottom: 1px solid rgba($grey-dark, .1);
-    z-index: 1;
     background-color: $grey-dark;
     box-shadow: .25px .25px 10px rgba($grey-dark, .09);
 
@@ -86,7 +85,7 @@
         &-mobile {
 
             position: fixed;
-            z-index: 1;
+            z-index: 5;
             right: 0;
             top: -9px;
 
@@ -108,7 +107,7 @@
                 height: 4px;
                 border-radius: 2px;
                 margin-right: 20px;
-                transition: all .5s;
+                transition: transform .2s;
 
                 &:not(:last-child){
                     margin-bottom: 4px;
@@ -119,7 +118,7 @@
 
             &__input[type=checkbox]:checked + .navigation-mobile__hamburger {
 
-                transform: rotate(45deg) translate(10px, 3px);
+                transform: rotate(45deg) translate(6px, 5px);
 
             }
 
@@ -131,7 +130,7 @@
 
             &__input[type=checkbox]:checked ~ .navigation-mobile__hamburger + div + div {
 
-                transform: rotate(-45deg) translate(8px, -2px);
+                transform: rotate(-45deg) translate(6px, -5px);
 
             }
 
@@ -146,11 +145,13 @@
                 right: 0px;
                 background-color: $grey-dark;
                 color: white;
+                top: 0;
+                z-index: -1;
 
                 & div {
 
                     position: absolute;
-                    top: 50%;
+                    top: 45%;
                     left: 50%;
                     transform:translate(-50%,-50%);
                     overflow: hidden;
