@@ -53,6 +53,10 @@ nunjucks.configure({ autoescape: false, noCache: true });
 // HTML Minification
 const htmlmin = require("gulp-htmlmin");
 
+// HTML Validation
+
+const w3cjs = require('gulp-w3cjs');
+
 // Store Posts Data In Memory
 let posts = [];
 
@@ -151,4 +155,12 @@ gulp.task("generatePostsIndex", () => {
 // Combine & Order HTML Generation & Posts Index Generation
 gulp.task("html", () => {
   runSequence("generateHTML", "generatePostsIndex");
+});
+
+// HTML Validation
+ 
+gulp.task('validate', function () {
+    gulp.src('../dist/**/*.html')
+        .pipe(w3cjs())
+        .pipe(w3cjs.reporter());
 });

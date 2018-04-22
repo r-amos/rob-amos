@@ -8,8 +8,8 @@
                     <h3><a class="posts__link" href="./{{post.url}}.html"> {{ post.title }}</h3>
                     <h4 class="posts__date">Posted: {{ post.formattedDate }}</h4>
                     <p>{{ post.summary}}</p>
+                    <a href="./{{post.url}}.html" class="button button--red">Read More</a>
                 </li>
-                <a href="./{{post.url}}.html" class="button button--red">Read More</a>
             {% endfor %}
         </ul>
     </div>

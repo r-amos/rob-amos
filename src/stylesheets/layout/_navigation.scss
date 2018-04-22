@@ -102,33 +102,35 @@
 
             &__hamburger {
 
+                display: block;
                 background-color: $orange-dark;
                 width: 30px;
                 height: 4px;
                 border-radius: 2px;
                 margin-right: 20px;
-                transition: transform .2s;
+                transition: transform .4s;
 
                 &:not(:last-child){
+
                     margin-bottom: 4px;
 
                 }
 
             }
 
-            &__input[type=checkbox]:checked + .navigation-mobile__hamburger {
+            &__input[type=checkbox]:checked + label :first-child {
 
                 transform: rotate(45deg) translate(6px, 5px);
 
             }
 
-            &__input[type=checkbox]:checked + .navigation-mobile__hamburger + div {
+            &__input[type=checkbox]:checked + label :nth-child(2) {
 
                 opacity: 0;
 
             }
 
-            &__input[type=checkbox]:checked ~ .navigation-mobile__hamburger + div + div {
+            &__input[type=checkbox]:checked + label :last-child  {
 
                 transform: rotate(-45deg) translate(6px, -5px);
 
@@ -138,6 +140,7 @@
 
                 height: 100vh;
                 width: 100vw;
+                padding-top: 15%;
                 list-style: none;
                 transform:translateX(400%);
                 transition: all .75s;
@@ -148,27 +151,25 @@
                 top: 0;
                 z-index: -1;
 
-                & div {
+                li {
 
-                    position: absolute;
-                    top: 45%;
-                    left: 50%;
-                    transform:translate(-50%,-50%);
+                    margin-left: 10%;
                     overflow: hidden;
 
-                    & li:after {
+                    &:after {
 
                         content: "";
                         margin-top: 1rem;
                         display: block;
+                        width: 80%;
                         height: 1rem;
-                        transform: translateX(-100%);
+                        transform: translateX(-110%);
                         background: linear-gradient(to left, #F45C43, #EB3349);
                         transition: all .2s;
                 
                     }
 
-                    & li:hover:after {
+                    &:hover:after {
 
                         transform: translateX(0);
                 
@@ -199,7 +200,7 @@
 
             }
 
-            &__input[type=checkbox]:checked ~ div  ~ ul {
+            &__input[type=checkbox]:checked  ~ ul {
 
                 transform:translateX(0);
 
