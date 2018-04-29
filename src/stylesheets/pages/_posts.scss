@@ -22,6 +22,7 @@
         display: inline-block;
         text-decoration: none;
         $color: rgba(black,.8);
+        color: $color;
         @include animate-link($color);
 
         &:hover {
@@ -32,7 +33,7 @@
 
         &:visited {
 
-            color: inherit;
+            color: $color;
 
         }
 
