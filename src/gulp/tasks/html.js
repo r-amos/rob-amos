@@ -2,6 +2,7 @@
 const gulp = require("gulp");
 const path = require("path");
 const moment = require("moment");
+const critical = require('critical');
 
 // Converting Markdown To HTML & Extract Grey Matter
 const hljs = require("highlightjs");
@@ -152,9 +153,23 @@ gulp.task("generatePostsIndex", () => {
   browserSync.reload();
 });
 
+// Critical CSS (Above The Fold CSS Generation)
+
+gulp.task("critical", () => {
+  critical.generate({
+      inline: true,
+      base: '../dist/',
+      src: 'index.html',
+      dest: '../dist/index.html',
+      minify: true,
+      width: 1290,
+      height: 800
+  });
+});
+
 // Combine & Order HTML Generation & Posts Index Generation
 gulp.task("html", () => {
-  runSequence("generateHTML", "generatePostsIndex");
+  runSequence("generateHTML", "generatePostsIndex", "critical");
 });
 
 // HTML Validation

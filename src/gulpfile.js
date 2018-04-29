@@ -37,7 +37,7 @@ gulp.task("serve", () => {
 
 // Sequence Tasks, Before Build Then Watch For Changes
 gulp.task("build", () => {
-  runSequence("tidy", ["html","img", "js", "sass", "serve"]);
+  runSequence("tidy", "sass", ["html","img", "js", "serve"]);
 });
 
 // Chain All Tasks
